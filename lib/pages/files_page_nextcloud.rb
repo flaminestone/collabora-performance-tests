@@ -1,5 +1,5 @@
 require_relative './../../lib/manager'
-class FilesPage
+class FilesPageNextcloud
   def initialize; end
 
   def create_folder_and_open(instance)
@@ -31,6 +31,7 @@ class FilesPage
 
   def click_new_folder_with_rand_name
     folder_selector = @instance.get_element('//*[@id="controls"]/div[2]/div[2]/ul/li[2]/a')
+
     folder_selector.click
     sleep 0.5
     inpute_element = @instance.get_element('//*[@id="view15-input-folder"]')
@@ -51,10 +52,10 @@ class FilesPage
   end
 
   def click_new_document_with_rand_name
-    document_selector = @instance.get_element('//*[@id="controls"]/div[2]/div[2]/ul/li[4]/a')
+    document_selector = @instance.get_element('//*[@id="body-user"]/div[6]/ul/li[3]/a')
     document_selector.click
     sleep 0.5
-    inpute_element = @instance.get_element('//*[@id="view15-input-x-office-document"]')
+    inpute_element = @instance.get_element('//*[@id="view9-input-x-office-document"]')
     document_name = Random.new_seed
     @instance.set_text_to_iframe(inpute_element, document_name)
     @instance.send_keys(inpute_element, :return)
