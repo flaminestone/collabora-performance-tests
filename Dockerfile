@@ -43,8 +43,5 @@ WORKDIR /collabora-performance-tests
 ADD . /collabora-performance-tests
 RUN gem install bundler
 RUN bundle install
-RUN mkdir ~/.s3
-RUN echo 'AKIAJZMO53VQCE2FHR4A' > ~/.s3/key
-RUN echo 'a/FGvYv0Dh/HryIFQTH/7GD3HGdrRZBY09tlYqVr' > ~/.s3/private_key
 CMD rake simple_runner
 
