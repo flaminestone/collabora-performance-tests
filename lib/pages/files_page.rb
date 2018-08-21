@@ -32,7 +32,7 @@ class FilesPage
   def click_new_folder_with_rand_name
     puts 'get element //*[@id="controls"]/div[2]/div[2]/ul/li[4]/a'
     sleep 1
-    folder_selector = @instance.get_element('//*[@id="controls"]/div[2]/div[2]/ul/li[4]/a')
+    folder_selector = @instance.get_element('//*[@id="controls"]/div[2]/div[2]/ul/li[2]/a')
     puts 'click to it'
     folder_selector.click
     @instance.wait_until_element_visible('//*[@id="view15-input-folder"]')
@@ -54,6 +54,7 @@ class FilesPage
   end
 
   def click_new_document_with_rand_name
+    puts '++++++++++++++++++click_new_document_with_rand_name'
     document_selector = @instance.get_element('//*[@id="controls"]/div[2]/div[2]/ul/li[4]/a')
     document_selector.click
     sleep 0.5
@@ -62,6 +63,7 @@ class FilesPage
     @instance.set_text_to_iframe(inpute_element, document_name)
     @instance.send_keys(inpute_element, :return)
     document_name
+    puts '-------------------click_new_document_with_rand_name'
   end
 
   def open_document(name)
