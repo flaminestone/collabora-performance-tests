@@ -1,3 +1,4 @@
+require 'bundler/setup'
 require_relative './static_data'
 require_relative './pages/login_page'
 require_relative '../lib/pages/collabora_page'

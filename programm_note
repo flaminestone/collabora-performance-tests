@@ -12,3 +12,4 @@ docker run -t -d -p 127.0.0.1:9980:9980 -e "domain=<collabora-\\performance-\\te
 
 
     docker run -d -p 9000:80  nextcloud
+ -v /home/flamine/RubymineProjects/collabora-performance-tests/video:collabora-performance-tests/video
