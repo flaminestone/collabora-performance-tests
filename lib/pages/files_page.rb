@@ -23,16 +23,19 @@ class FilesPage
 
   def click_to_button_new
     @instance.wait_until_element_visible('//*[@class="button new"]')
-
     button_new_element = @instance.get_element('//*[@class="button new"]')
     button_new_element.click
     @instance.wait_until_element_visible('//*[@class="newFileMenu popovermenu bubble open menu"]')
+    puts 'Button //*[@class="newFileMenu popovermenu bubble open menu"] visible'
   end
 
   def click_new_folder_with_rand_name
-    folder_selector = @instance.get_element('//*[@id="controls"]/div[2]/div[2]/ul/li[2]/a')
+    puts 'get element //*[@id="controls"]/div[2]/div[2]/ul/li[4]/a'
+    sleep 1
+    folder_selector = @instance.get_element('//*[@id="controls"]/div[2]/div[2]/ul/li[4]/a')
+    puts 'click to it'
     folder_selector.click
-    sleep 0.5
+    @instance.wait_until_element_visible('//*[@id="view15-input-folder"]')
     inpute_element = @instance.get_element('//*[@id="view15-input-folder"]')
     folder_name = Random.new_seed
     @instance.set_text_to_iframe(inpute_element, folder_name)
@@ -47,7 +50,7 @@ class FilesPage
 
   def open_folder(name)
     id = get_folder_id(name)
-    @instance.open(StaticData::SERVER + "/owncloud/index.php/apps/files/?dir=/#{name}&fileid=#{id}")
+    @instance.open(StaticData::SERVER + "/apps/files/?dir=/#{name}&fileid=#{id}")
   end
 
   def click_new_document_with_rand_name
