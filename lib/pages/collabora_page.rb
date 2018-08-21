@@ -5,7 +5,7 @@ class CollaboraPage
   def write_text(instance)
     @instance = instance
     10.times do
-      @instance.send_keys('1 2 3 4 5 6 7 8 9 0', '')
+      @instance.send_keys('1 2 3 4 5 6 7 8 9 0', '1 2 3 4 5 6 7 8 9 0')
       sleep 3
     end
   end

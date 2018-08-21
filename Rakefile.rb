@@ -1,4 +1,4 @@
-require_relative '/lib/runners/simple_runner'
+require_relative 'lib/manager'
 
 task :simple_runner do |_t|
   manager = Manager.new

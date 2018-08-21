@@ -3,6 +3,7 @@ class SimpleRunner
   def self.run(instance)
     @instance = instance
     login
+    open_performance_folder
     create_folder_and_open
     create_document_and_open
     sleep 5
@@ -17,6 +18,11 @@ class SimpleRunner
   def self.create_folder_and_open
     puts '[SimpleRunner] create_folder_and_open'
     FilesPage.new.create_folder_and_open(@instance)
+  end
+
+  def self.open_performance_folder
+    puts '[SimpleRunner] open_performance_folder'
+    FilesPage.new.open_performance_folder(@instance)
   end
 
   def self.create_document_and_open

@@ -16,6 +16,11 @@ class FilesPage
     open_document(document_name)
   end
 
+  def open_performance_folder(instance)
+    @instance = instance
+    open_folder(StaticData::PERFORMANCE_FOLDER)
+  end
+
   def click_to_button_new
     @instance.wait_until_element_visible('//*[@class="button new"]')
 
@@ -32,11 +37,17 @@ class FilesPage
     folder_name = Random.new_seed
     @instance.set_text_to_iframe(inpute_element, folder_name)
     @instance.send_keys(inpute_element, :return)
+    @instance.wait_until_element_visible("//*[@id='fileList']/*[@data-file='#{folder_name}']")
     folder_name
   end
 
+  def get_folder_id(name)
+    @instance.get_element("//*[@id='fileList']/*[@data-file='#{name}']").attribute('data-id')
+  end
+
   def open_folder(name)
-    @instance.open(StaticData::SERVER + "/owncloud/index.php/apps/files/?dir=/#{name}&fileid=22")
+    id = get_folder_id(name)
+    @instance.open(StaticData::SERVER + "/owncloud/index.php/apps/files/?dir=/#{name}&fileid=#{id}")
   end
 
   def click_new_document_with_rand_name
@@ -54,6 +65,7 @@ class FilesPage
     @instance.wait_until_element_visible("//span[contains(text(), '#{name}')]")
     file = @instance.get_element("//span[contains(text(), '#{name}')]")
     file.click
+    puts "document #{name} opened"
   end
 
   def submit_and_wait
