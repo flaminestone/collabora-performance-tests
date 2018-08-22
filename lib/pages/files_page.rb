@@ -62,8 +62,8 @@ class FilesPage
     document_name = Random.new_seed
     @instance.set_text_to_iframe(inpute_element, document_name)
     @instance.send_keys(inpute_element, :return)
-    document_name
     puts '-------------------click_new_document_with_rand_name'
+    document_name
   end
 
   def open_document(name)
