@@ -25,8 +25,8 @@ class FilesPage
     @instance.wait_until_element_visible('//*[@class="button new"]')
     button_new_element = @instance.get_element('//*[@class="button new"]')
     button_new_element.click
-    @instance.wait_until_element_visible('//*[@class="newFileMenu popovermenu bubble open menu"]')
-    puts 'Button //*[@class="newFileMenu popovermenu bubble open menu"] visible'
+    @instance.wait_until_element_visible('//*[@class="newFileMenu popovermenu bubble menu open menu-left"]')
+    puts 'Button //*[@class="newFileMenu popovermenu bubble menu open menu-left"] visible'
   end
 
   def click_new_folder_with_rand_name
