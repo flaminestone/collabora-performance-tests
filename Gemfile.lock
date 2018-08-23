@@ -15,13 +15,13 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.0)
-    aws-sdk (2.11.112)
-      aws-sdk-resources (= 2.11.112)
-    aws-sdk-core (2.11.112)
+    aws-sdk (2.11.113)
+      aws-sdk-resources (= 2.11.113)
+    aws-sdk-core (2.11.113)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.11.112)
-      aws-sdk-core (= 2.11.112)
+    aws-sdk-resources (2.11.113)
+      aws-sdk-core (= 2.11.113)
     aws-sigv4 (1.0.3)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
@@ -94,6 +94,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  onlyoffice_file_helper
   onlyoffice_webdriver_wrapper!
   rake
   rspec

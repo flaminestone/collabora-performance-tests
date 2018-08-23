@@ -1,5 +1,8 @@
 require_relative './../../lib/manager'
+require 'onlyoffice_file_helper'
+
 class FilesPage
+  include OnlyofficeFileHelper
   def initialize; end
 
   def create_folder_and_open(instance)
@@ -19,6 +22,19 @@ class FilesPage
   def open_performance_folder(instance)
     @instance = instance
     open_folder(StaticData::PERFORMANCE_FOLDER)
+  end
+
+  def upload_document_and_open(instance, filename)
+    @instance = instance
+    upload_document(filename)
+    open_document(filename)
+  end
+
+  def upload_document(filename)
+    sleep 2
+    file_path = File.join(File.dirname(__FILE__).split('/lib')[0], "assets/documents/#{filename}")
+    @instance.type_to_locator('//*[@id="file_upload_start"]', file_path, false, false, false, true)
+    wait_document_visible(filename)
   end
 
   def click_to_button_new
@@ -67,10 +83,16 @@ class FilesPage
   end
 
   def open_document(name)
-    @instance.wait_until_element_visible("//span[contains(text(), '#{name}')]")
-    file = @instance.get_element("//span[contains(text(), '#{name}')]")
+    wait_document_visible(name)
+    file = @instance.get_element("//span[contains(text(), '#{File.basename(name, '.*')}')]")
     file.click
     puts "document #{name} opened"
+  end
+
+  def wait_document_visible(name)
+    puts "Wail for file with name <<#{name}>>"
+    @instance.wait_until_element_visible("//span[contains(text(), '#{File.basename(name, '.*')}')]")
+    puts "File with name <<#{name}>> is visible"
   end
 
   def submit_and_wait
