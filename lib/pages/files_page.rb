@@ -16,7 +16,7 @@ class FilesPage
     @instance = instance
     click_to_button_new
     document_name = click_new_document_with_rand_name
-    open_document(document_name)
+    open_document(document_name.to_s)
   end
 
   def open_performance_folder(instance)
@@ -53,7 +53,7 @@ class FilesPage
     folder_selector.click
     @instance.wait_until_element_visible('//*[@id="view15-input-folder"]')
     inpute_element = @instance.get_element('//*[@id="view15-input-folder"]')
-    folder_name = Random.new_seed
+    folder_name = Random.new_seed.to_s
     @instance.set_text_to_iframe(inpute_element, folder_name)
     @instance.send_keys(inpute_element, :return)
     @instance.wait_until_element_visible("//*[@id='fileList']/*[@data-file='#{folder_name}']")
@@ -75,7 +75,7 @@ class FilesPage
     document_selector.click
     sleep 0.5
     inpute_element = @instance.get_element('//*[@id="view15-input-x-office-document"]')
-    document_name = Random.new_seed
+    document_name = Random.new_seed.to_s
     @instance.set_text_to_iframe(inpute_element, document_name)
     @instance.send_keys(inpute_element, :return)
     puts '-------------------click_new_document_with_rand_name'
