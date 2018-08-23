@@ -11,6 +11,8 @@ class FileOpenRunner
       wait_until_editor_open
       sleep 5
       scrolling
+    rescue StandardError => msg
+      p msg
     end
     name = "FileOpenRunner_#{Time.now.to_s.tr(' ', '_')}.mov"
     @instance.headless.headless_instance.video.stop_and_save("assets/video/#{name}")

@@ -13,3 +13,6 @@ docker run -t -d -p 127.0.0.1:9980:9980 -e "domain=<collabora-\\performance-\\te
 
     docker run -d -p 9000:80  nextcloud
  -v /home/flamine/RubymineProjects/collabora-performance-tests/video:collabora-performance-tests/video
+
+
+ scp root@142.93.127.64:/root/collabora-performance-tests/video/FileOpenRunner_2018-08-23_11:10:51_+0000.mov ~/1.mov
