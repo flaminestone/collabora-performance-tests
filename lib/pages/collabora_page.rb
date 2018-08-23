@@ -14,7 +14,7 @@ class CollaboraPage
   def scrolling(instance)
     @instance = instance
     @instance.send_keys('', :page_down)
-    1.times do |iteration|
+    70.times do |iteration|
       10.times do |i|
         puts "#{Time.now} -------PAGE_DOWN #{i} of 10"
         @instance.send_keys('', :page_down)
