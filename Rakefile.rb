@@ -11,3 +11,10 @@ task :file_open_runner do |_t|
   puts 'Wait for file getting'
   `sh`
 end
+
+task :file_open_and_write_runner do |_t|
+  manager = Manager.new
+  FileOpenAndWriteRunner.run(manager.instance)
+  puts 'Wait for file getting'
+  `sh`
+end
